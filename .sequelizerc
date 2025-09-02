@@ -1,0 +1,8 @@
+import { resolve } from 'path';
+
+export default {
+  'config': resolve('app', 'config/db.conf.js'),
+  'models-path': resolve('app', 'models'),
+  'seeders-path': resolve('app/database', 'seeders'),
+  'migrations-path': resolve('app/database', 'migrations')
+};
