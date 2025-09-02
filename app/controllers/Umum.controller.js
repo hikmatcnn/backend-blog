@@ -3,6 +3,7 @@ const { Op, Sequelize, where, or } = require('sequelize');
 const sequelize = new Sequelize(process.env.DATABASE_URL);
 // const initModels = require('../database/init');
 // const { defineLevel } = require('../helpers/App.helper');
+const { sendError, sendResponse } = require('../handlers/Response.handler');
 // var models = initModels(sequelize);
 
 module.exports.getUmumProduct = async (req, res, next) => {
@@ -27,9 +28,9 @@ module.exports.getUmumCekDB = async (req, res, next) => {
             message: "Jenis File fetched successfully",
             data: "✅ PostgreSQL connection successful with Sequelize"
         });
-    } catch (error) {
-        console.error('❌ PostgreSQL connection failed:', error.message);
-        sendError(req, next, error);        
+    } catch (err) {
+        console.error('❌ PostgreSQL connection failed:', err.message);
+        sendError(req, next, err);        
     } finally {        
         await sequelize.close();
     } 
