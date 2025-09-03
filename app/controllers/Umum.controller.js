@@ -31,7 +31,6 @@ module.exports.getUmumCekDB = async (req, res, next) => {
     } catch (err) {
         console.error('❌ PostgreSQL connection failed:', err.message);
         sendError(req, next, err);        
-    } finally {        
-        await sequelize.close();
+    } finally {                
     } 
 }
